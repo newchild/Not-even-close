@@ -22,7 +22,8 @@ namespace Skype_Drawer_L
 		{
 			Skype Client = new Skype();
 			Client.Attach();
-			Client.MessageStatus+=Client_MessageStatus;
+			Client.MessageStatus +=
+			  new _ISkypeEvents_MessageStatusEventHandler(Client_MessageStatus);
 			CustomEvents.Game.OnGameLoad+=Game_OnGameLoad;
 		}
 
@@ -49,6 +50,7 @@ namespace Skype_Drawer_L
 			aTimer.Elapsed += new ElapsedEventHandler(OnTimedEvent);
 			aTimer.Interval = 5000;
 			aTimer.Enabled = true;
+			Game.PrintChat("received Message");
 		}
 		private static void OnTimedEvent(object source, ElapsedEventArgs e)
 		{
