@@ -21,10 +21,7 @@ namespace Skype_Drawer_L
 		private static LeagueSharp.Common.Menu Menu;
 		static void Main(string[] args)
 		{
-			Skype Client = new Skype();
-			Client.Attach();
-			Client.MessageStatus +=
-			  new _ISkypeEvents_MessageStatusEventHandler(Client_MessageStatus);
+			
 			CustomEvents.Game.OnGameLoad+=Game_OnGameLoad;
 		}
 
@@ -32,6 +29,10 @@ namespace Skype_Drawer_L
 		{
 			Menu = new LeagueSharp.Common.Menu("Skype Loader", "Skype Loader", true);
 			Menu.AddToMainMenu();
+			Skype Client = new Skype();
+			Client.Attach();
+			Client.MessageStatus +=
+			  new _ISkypeEvents_MessageStatusEventHandler(Client_MessageStatus);
 		}
 
 
